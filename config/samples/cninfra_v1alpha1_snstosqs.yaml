@@ -1,0 +1,24 @@
+apiVersion: cninfra.ibanmarco.io/v1alpha1
+kind: SnsToSqs
+metadata:
+  labels:
+    app.kubernetes.io/name: snstosqs
+    app.kubernetes.io/instance: snstosqs-sample
+    app.kubernetes.io/part-of: snstosqs
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: snstosqs
+  name: subs-sample-01
+spec:
+  awsRegion: us-east-1
+  sqs:
+    - queueName: k8s-sqs-01
+      dlqName: k8s-sqs-01-dlq
+      fifo: true
+      kmsKeyId: poc/k8s-sqs
+  sns:
+    - snsName: k8s-sns-01
+      kmsKeyId: poc/k8s-sns
+      fifo: true
+      endpoints:
+        - sqsName: k8s-sqs-01
+

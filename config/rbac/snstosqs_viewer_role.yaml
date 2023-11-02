@@ -1,0 +1,27 @@
+# permissions for end users to view snstosqs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: snstosqs-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: snstosqs
+    app.kubernetes.io/part-of: snstosqs
+    app.kubernetes.io/managed-by: kustomize
+  name: snstosqs-viewer-role
+rules:
+- apiGroups:
+  - cninfra.ibanmarco.io
+  resources:
+  - snstosqs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cninfra.ibanmarco.io
+  resources:
+  - snstosqs/status
+  verbs:
+  - get

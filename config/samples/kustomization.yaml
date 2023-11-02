@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- cninfra_v1alpha1_snstosqs.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
